@@ -117,3 +117,24 @@ p.alert {
   padding: 0.5ex 1ex;
   display: none;
 }
+
+.error-wrapper h1 {
+  color: var(--brand-500);
+  font-size: 20vh;
+  margin: 0;
+  line-height: 90%;
+}
+
+.error-wrapper p {
+  color: var(--accent-500);
+  font-size: 15pt;
+  font-family: "Noway";
+}
+
+.error-wrapper p.name {
+  color: var(--brand-500);
+  font-weight: bold;
+  font-size: 23pt;
+  font-family: "Noway";
+  text-transform: uppercase;
+}

@@ -5,6 +5,20 @@
 {%
 block head %}
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/page.css') }}"/>
+    <meta property="og:title" content="{{ context.title }}"/>
+    {% if context.summary %}
+        <meta property="og:description" content="{{context.summary}}"/>
+        {%endif%}
+        <meta property="og:article:published_time " content="{{context.date}}"/>
+        {% if context.author %}
+            <meta property="og:article:author" content="{{context.author}}"/>
+        {% endif %}
+        <meta property="og:type" content="article"/>
+        <meta property="og:url" content="{{ request.base_url }}"/>
+        {% if context.image_url %}
+            <meta property="og:image" content="{{ context.image_url }}"/>
+            <meta name="twitter:card" content="summary_large_image"/>
+        {% endif %}
 {% endblock %}
 {% block content %}
 
