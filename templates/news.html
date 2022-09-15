@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% block title %}
+    {{ context.title }}
+{% endblock %}
+{% block head %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/news.css') }}"/>
+
+    <meta property="og:title" content="{{ context.title }}"/>
+    {% if context.summary %}
+        <meta property="og:description" content="{{context.summary}}"/>
+        {%endif%}
+        <meta property="og:article:published_time " content="{{context.date}}"/>
+        {% if context.author %}
+            <meta property="og:article:author" content="{{context.author}}"/>
+        {% endif %}
+        <meta property="og:type" content="article"/>
+        <meta property="og:url" content="{{ request.base_url }}"/>
+        {% if context.image_url %}
+            <meta property="og:image" content="{{ context.image_url }}"/>
+            <meta name="twitter:card" content="summary_large_image"/>
+        {% endif %}
+    {% endblock %}
+    {% block content %}
+
+        <article class="page article">
+            {% if context.image_url %}
+                <div class="image-wrapper">
+                    <img class="feature-image" src="{{ context.image_url }}"/>
+                {% endif %}
+
+                <header class="big-header">
+                    <aside class="meta">
+                        <p class="category">{{ context.category }}</p>
+                    </aside>
+                    <h1>{{ context.title }}</h1>
+                    <aside class="meta">
+                        {% if context.author %}
+                            <p class="author">{{context.author}}</p>
+                        {% endif %}
+                        <p class="date">{{ context.date.strftime('%d %b %Y') }}</p>
+                    </aside>
+                </header>
+                {% if context.image_url %}
+                </div>
+            {% endif %}
+            <p class="summary">{{ context.summary }}</p>
+
+            <section>{{ context.content | safe }}</section>
+        </article>
+
+    {% endblock %}

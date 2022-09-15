@@ -1,0 +1,46 @@
+{% extends 'base.html' %} {% block title %}{{ context.title | capitalize }}{% endblock %} {%
+block head %}
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='styles/list.css') }}"
+/>
+{% endblock %} {% block content %}
+
+<article class="post-list">
+  <header class="list-header">
+    {% if context.breadcrumb|length > 1 %}
+    <ul role="breadcrumb">
+      {% for b in context.breadcrumb %}
+      <li><a href="/{{ context.breadcrumb[:loop.index] | join("/") }}">{{ b }}</a></li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+    <h1>{{context.title}}</h1>
+  </header>
+
+  {% if context.children %}
+  <nav class="menu">
+   {% for ch in context.children %}
+    <a href="{{ch.url}}">{{ch.label}}</a>
+   {% endfor %}
+  </nav>
+  {% endif %}
+
+  <ul role="list">
+    {% for page in context.pages %}
+    <li>
+      <a href="{{page.url}}" title="{{page.title}}">
+        {% if page.category %}
+        <span class="category">{{page.category}}</span>
+        {% endif %} {{page.title}}
+      </a>
+      {% if page.summary %}
+      <p class="summary">{{page.summary}}</p>
+      {% endif %}
+      <p class="date">{{page.date.strftime('%d %b %Y') }}</p>
+    </li>
+    {% endfor %}
+  </ul>
+</article>
+
+{% endblock %}

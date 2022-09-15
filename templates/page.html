@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block title %}
+    {{ context.title }}
+{% endblock %}
+{%
+block head %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/page.css') }}"/>
+{% endblock %}
+{% block content %}
+
+    <article class="page article">
+        <header class="big-header">
+            <h1>{{ context.title }}</h1>
+            <p>{{ context.summary }}</p>
+        </header>
+
+        <div class="article-wrapper">
+            {% if context.siblings|length > 1 %}
+                <nav class="menu">
+                    <strong>{{context.parent|capitalize}}</strong>
+                    {% for page in context.siblings %}
+                        <a title="{{page.title}}" href="{{page.url}}" {% if page.url == request.path %} class="active" {% endif %}>
+                            {{page.title}}
+                        </a>
+                    {% endfor %}
+                </nav>
+            {% endif %}
+
+            <section>{{ context.content | safe }}</section>
+        </div>
+    </article>
+
+{% endblock %}

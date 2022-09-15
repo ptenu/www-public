@@ -1,0 +1,119 @@
+@import url("./reset.css");
+@import url("./layout.css");
+
+#cookie-notice {
+  position: sticky;
+  bottom: 0;
+  width: 100%;
+  background-color: #fff;
+}
+
+#cookie-notice section {
+  flex: 1 1 100%;
+  width: 890px;
+  max-width: 100%;
+  margin: 1ex auto;
+  background-color: var(--colour-sand);
+  padding: 1ex 2ex;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--accent-800);
+  gap: 1rem;
+}
+
+#cookie-notice button {
+  cursor: pointer;
+  text-transform: uppercase;
+  padding: 0.5ex 1ex;
+  border: none;
+  font-weight: 600;
+  background: none;
+  color: var(--accent-800);
+}
+
+#cookie-notice button:hover {
+  text-decoration: underline;
+  color: var(--colour-blue);
+}
+
+#cookie-notice button:focus {
+  outline: 3px solid var(--accent-600);
+  outline-offset: 3px;
+}
+
+a.active {
+  font-weight: 600;
+}
+
+a:visited {
+  color: var(--accent-600);
+}
+
+a.action,
+button.action {
+  position: relative;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: bold;
+  border-radius: 0.22ex;
+  background-color: var(--brand-500);
+  color: #fff;
+  padding: 0.66ex 1ex;
+  border: none;
+  cursor: pointer;
+}
+
+a.action:hover,
+button.action:hover {
+  background-color: var(--brand-400);
+}
+
+a.action:focus,
+button.action:focus {
+  outline-offset: 2px;
+  outline-width: 3px;
+  outline-style: solid;
+  outline-color: var(--accent-600);
+}
+
+.choice-grid {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 1ex;
+}
+
+form label {
+  display: grid;
+  grid-template-columns: 40px auto;
+  grid-template-rows: auto auto;
+  cursor: pointer;
+}
+
+form label input {
+  grid-row: 1 / -1;
+  align-self: start;
+  margin: 0.66ex 1ex 0 1ex;
+  width: 18px;
+  height: 18px;
+}
+
+.article form label p {
+  margin: 0;
+}
+
+.article form label p:not(.hint) {
+  font-weight: bold;
+}
+
+.article form label p.hint {
+  color: var(--accent-600);
+  font-size: small;
+}
+
+p.alert {
+  background-color: var(--brand-100);
+  padding: 0.5ex 1ex;
+  display: none;
+}

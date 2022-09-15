@@ -1,0 +1,110 @@
+{% extends 'base.html' %}
+{% block title %}
+    Become a member
+{% endblock %}
+{%
+block head %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/page.css') }}"/>
+{% endblock %}
+{% block content %}
+
+    <article class="page article">
+        <header class="big-header">
+            <h1>{{ context.title }}</h1>
+            <p>{{ context.summary }}</p>
+        </header>
+
+        <div class="article-wrapper">
+            {% if context.siblings|length > 1 %}
+                <nav class="menu">
+                    <strong>{{context.parent|capitalize}}</strong>
+                    {% for page in context.siblings %}
+                        <a title="{{page.title}}" href="{{page.url}}" {% if page.url == request.path %} class="active" {% endif %}>
+                            {{page.title}}
+                        </a>
+                    {% endfor %}
+                </nav>
+            {% endif %}
+
+            <section>
+                {{ context.content | safe }}
+
+                <form id="join-form" title="Join form, first questions">
+                    <h4>Do you rent? <span class="hint">(Required)</span></h4>
+                    <p class="alert" id="is_renter_alert">This question is required.</p>
+                    <div class="choice-grid" title="Do you rent?">
+                        <label>
+                            <p>I rent</p>
+                            <p class="hint">This includes living with family.</p>
+                            <input type="radio" name="is_renter" value="yes" />
+                        </label>
+                        <label>
+                            <p>I own my home</p>
+                            <input type="radio" name="is_renter" value="no" />
+                        </label>
+                    </div>
+
+                    <h4>Do any of the following apply to you? <span class="hint">(Optional)</span></h4>
+                    <div class="choice-grid" title="Do any of these apply to you?">
+                        <label>
+                            <p>I'm a student</p>
+                            <p class="hint">At school, college, or university</p>
+                            <input type="checkbox" name="discount" value="STUDENT" />
+                        </label>
+                        <label>
+                            <p>I have a low income</p>
+                            <input type="checkbox" name="discount" value="LOW37" />
+                        </label>
+                        <label>
+                            <p>I do not work</p>
+                            <input type="checkbox" name="discount" value="NOTWORKING" />
+                        </label>
+                    </div>
+
+                    <p>By clicking continue, you agree to abide by the terms of membership and the Union's rules and policies.</p>
+                    <button type="submit" title="Agree to terms and go to payment" class="action">Continue</button>
+                </form>
+            </section>
+
+        </div>
+    </article>
+
+{% endblock %}
+
+{% block script %}
+<script>
+    function handleSubmit(e) {
+        e.preventDefault();
+        const data = new FormData(e.target)
+        const alert = document.getElementById("is_renter_alert");
+
+        if (data.get("is_renter") == null) {
+            alert.style.display = "block";
+            return;
+        }
+
+        alert.style.display = "none";
+
+        const isRenter = data.get("is_renter") == "yes"
+        const promoCode = data.getAll("discount").pop()
+        
+        let url = "https://buy.stripe.com/fZe2axdAY9VFakM28a"
+
+        if (!isRenter) {
+            url = "https://buy.stripe.com/7sI5mJeF2ebV8cEaEH"
+        }
+
+        if (promoCode != undefined) {
+            url += "?prefilled_promo_code=" + promoCode
+        }
+
+        window.open(url, "_blank").focus()
+        e.target.style.display = "none"
+    }
+
+    const btn = document.getElementById("join-form")
+    btn.addEventListener("submit", handleSubmit, true)
+
+
+</script>
+{% endblock %}

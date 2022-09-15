@@ -1,0 +1,165 @@
+body {
+  display: flex;
+  flex-direction: column;
+  padding: 0 1rem;
+}
+
+body > header {
+  display: flex;
+  flex: 0 0 auto;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+  border-bottom: 2px solid var(--accent-600);
+  width: 890px;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+body > header > nav {
+  display: flex;
+  gap: 1rem;
+  align-items: baseline;
+}
+
+body > header > nav a.nav-link {
+  position: relative;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: bold;
+  border-radius: 0.22ex;
+  padding: 0.66ex 0;
+  z-index: 10;
+  color: var(--accent-600);
+}
+
+body > header > nav a.nav-link:not(.brand-link):hover {
+  color: var(--accent-800);
+}
+
+body > header > nav a.nav-link:not(.brand-link):before {
+  content: " ";
+  position: absolute;
+  display: block;
+  bottom: 0.5em;
+  left: 2px;
+  width: 40px;
+  height: 0.88em;
+  transform: skewY(-5deg);
+  background-color: transparent;
+  z-index: -1;
+}
+
+body > header > nav a.nav-link:hover::before {
+  background-color: var(--brand-50);
+}
+
+body > main {
+  flex: 1 1 100%;
+  width: 890px;
+  max-width: 100%;
+  margin: 2rem auto;
+}
+
+body > footer {
+  flex: 0 0 auto;
+  width: 890px;
+  max-width: 100%;
+  margin: 1rem auto 3rem;
+}
+
+body > footer > header {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+
+body > footer > section {
+  color: var(--accent-800);
+  font-size: 1em;
+  margin: 0.5rem 0;
+}
+
+body > footer > section > h1 {
+  color: var(--accent-800);
+  opacity: 0.77;
+  font-size: 1em;
+}
+
+body > footer > section > p {
+  color: var(--accent-800);
+  opacity: 0.77;
+  font-size: 0.89em;
+}
+
+body > footer ul[role="nav"] {
+  display: flex;
+  gap: 1em;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+#header-logo {
+  height: 2.22rem;
+  width: auto;
+}
+
+#footer-logo {
+  height: 2.22rem;
+  width: auto;
+}
+
+.helpline {
+  border: 5px solid var(--brand-500);
+  color: var(--brand-500);
+  padding: 1ex;
+  width: fit-content;
+}
+
+.helpline a.number {
+  font-family: "Noway";
+  color: var(--brand-500);
+  font-weight: bold;
+  font-size: 1.88em;
+  text-decoration: none;
+  margin: 0;
+  line-height: 0.98em;
+}
+
+.nav-link.brand-link {
+  background-color: var(--brand-500);
+  color: #fff;
+  padding: 0.66ex 1ex;
+}
+
+.nav-link.brand-link:hover {
+  background-color: var(--brand-400);
+  color: #fff;
+  padding: 0.66ex 1ex;
+}
+
+body > header a:focus,
+body > footer a:focus {
+  outline-offset: 2px;
+  outline-width: 3px;
+  outline-style: solid;
+  outline-color: var(--accent-600);
+}
+
+@media screen and (max-width: 545px) {
+  body > header {
+    flex-direction: column;
+    gap: 1rem;
+  }
+}
+
+@media print {
+  body > footer > header,
+  ul[role="nav"],
+  .nav-link {
+    display: none;
+  }
+}

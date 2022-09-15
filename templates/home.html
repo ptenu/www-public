@@ -1,0 +1,102 @@
+{% extends 'base.html' %} {% block title %}Home {% endblock %} {% block head %}
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='styles/home.css') }}"
+/>
+{% endblock %} {% block content %}
+
+<article class="page">
+  <section class="hero">
+    <article>
+      <header>
+        <h1>We rent.</h1>
+      </header>
+      <p>
+        We are renters like you, we believe supporting each other is the best
+        way to win.
+      </p>
+      <a href="/join">
+        <span>Become a member</span>
+        <i class="ti ti-arrow-up-right"></i>
+      </a>
+    </article>
+
+    <article>
+      <header>
+        <h1>We Volunteer.</h1>
+      </header>
+      <p>
+        We don't have staff, or an office - we're all volunteers giving our time
+        to help you.
+      </p>
+      <a href="/donate">
+        <span>Support us by donating</span>
+        <i class="ti ti-arrow-up-right"></i>
+      </a>
+    </article>
+
+    <article>
+      <header>
+        <h1>We Help.</h1>
+      </header>
+      <p>
+        Our organisation exists to campaign on behalf of renters, and support
+        members who are having problems with their landlord.
+      </p>
+      <a href="/support">
+        <span>Get help</span>
+        <i class="ti ti-arrow-up-right"></i>
+      </a>
+    </article>
+  </section>
+
+  <section class="about-link">
+    <a href="/about">
+      Find out more about our organisation, what we stand for, and what we do.
+    </a>
+    <span> &rarr; </span>
+  </section>
+
+  <section class="split">
+    <article class="post-list">
+      <header>
+        <h1>News</h1>
+      </header>
+      <ul role="list">
+        {% for page in context.news %}
+        <li>
+          <a href="{{page.url}}">
+            {% if page.category %}
+            <span class="category">{{page.category}}</span>
+            {% endif %} {{page.title}}
+          </a>
+          {% if page.summary %}
+          <p>{{page.summary}}</p>
+          {% endif %}
+        </li>
+        {% endfor %}
+      </ul>
+    </article>
+    <article class="post-list">
+      <header>
+        <h1>Information</h1>
+      </header>
+      <ul role="list">
+        {% for page in context.information %}
+        <li>
+          <a href="{{page.url}}">
+            {% if page.category %}
+            <span class="category">{{page.category}}</span>
+            {% endif %} {{page.title}}
+          </a>
+          {% if page.summary %}
+          <p>{{page.summary}}</p>
+          {% endif %}
+        </li>
+        {% endfor %}
+      </ul>
+    </article>
+  </section>
+</article>
+
+{% endblock %}

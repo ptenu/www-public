@@ -1,0 +1,137 @@
+.post-list {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: auto auto;
+  gap: 2rem;
+}
+
+@media screen and (max-width: 717px) {
+  .post-list {
+    grid-template-columns: auto;
+  }
+}
+
+.list-header {
+  grid-column: 1 /-1;
+}
+
+.list-header h1 {
+  margin: 0;
+  font-size: 2.22em;
+  color: var(--accent-800);
+  text-transform: capitalize;
+}
+
+.post-list ul[role="list"] {
+  margin: 0;
+  padding: 1ex 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1ex;
+  border-width: 2px 0 2px 0;
+  border-color: var(--accent-100);
+  border-style: solid;
+}
+
+.post-list ul[role="list"] li {
+  margin: 0;
+}
+
+.post-list ul[role="list"] li ~ li {
+  border-top: 2px solid var(--accent-100);
+  padding-top: 1ex;
+}
+
+.post-list ul[role="list"] li a {
+  font-family: "Noway";
+  text-decoration: none;
+  font-size: 1.22em;
+  margin-bottom: 0.33em;
+  font-weight: 600;
+}
+
+.post-list ul[role="list"] li p {
+  color: var(--accent-700);
+}
+
+.post-list ul[role="list"] li:focus-within {
+  outline: 3px solid var(--accent-800);
+  outline-offset: 2px;
+}
+
+.post-list ul[role="list"] li a:focus {
+  outline: none;
+}
+
+a .category {
+  position: relative;
+  font-family: "Noway";
+  color: var(--brand-700);
+  text-transform: capitalize;
+}
+
+a:hover .category {
+  color: var(--brand-500);
+}
+
+a .category:after {
+  position: relative;
+  content: "/";
+  display: inline-block;
+  margin: 0 0 0 1.34ex;
+  color: var(--accent-200);
+}
+
+.post-list ul[role="list"] li p.summary {
+  font-size: 1em;
+  margin-bottom: 0.22ex;
+}
+
+.post-list ul[role="list"] li p.date {
+  font-size: 0.88em;
+  font-weight: 600;
+  margin-bottom: 0.33ex;
+}
+
+ul[role="breadcrumb"] {
+  display: flex;
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+
+ul[role="breadcrumb"] li ~ li::before {
+  content: "/";
+  margin: 0 1.33ex;
+  color: var(--accent-200);
+}
+
+ul[role="breadcrumb"] li a {
+  text-decoration: none;
+  font-size: 1.12em;
+  text-transform: capitalize;
+}
+
+ul[role="breadcrumb"] li:last-child a {
+  font-weight: 600;
+}
+
+.menu {
+  background-color: whitesmoke;
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+  border-top: 2px solid var(--colour-sand);
+  align-self: start;
+  min-width: 200px;
+  gap: 1ex;
+}
+
+.menu a {
+  text-decoration: none;
+}
+
+.menu a:hover {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+}

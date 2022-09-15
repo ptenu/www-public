@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}{% endblock %} | Peterborough Tenants Union</title>
+
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles/global.css') }}"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@tabler/icons@latest/iconfont/tabler-icons.min.css"
+    />
+
+    {% block head %}{% endblock %}
+  </head>
+  <body>
+    <header title="Website header">
+      <a href="/" aria-label="Logo and link to homepage">
+        <img
+          id="header-logo"
+          src="https://static.peterboroughtenants.app/logos/SVG/ptu_logo_header.svg"
+          style="visibility: hidden"
+          alt="Peterborough Tenants Union logo; a bright red square with the shape of a roof cutout of the bottom half."
+        />
+      </a>
+
+      <nav id="site-navigation" title="Main website navigation">
+        <a class="nav-link" href="/">Home</a>
+        <a class="nav-link" href="/about">About</a>
+        <a class="nav-link" href="/guides">Guides</a>
+        <a class="nav-link brand-link" href="/join">Join</a>
+      </nav>
+    </header>
+
+    <main title="Main page content">{% block content %}{% endblock %}</main>
+
+    <aside
+      id="cookie-notice"
+      style="display: none"
+      title="Statutory cookie notice"
+    >
+      <section>
+        <p>
+          <strong>We only use essential cookies.</strong> But we have to tell
+          you anyway.
+        </p>
+        <button onclick="hideCookieNotice()">Hide forever</button>
+      </section>
+    </aside>
+
+    <footer title="Site footer">
+      <header>
+        <img
+          id="footer-logo"
+          src="https://static.peterboroughtenants.app/logos/SVG/ptu_logo_header.svg"
+          alt="PTU logo"
+        />
+        <aside class="helpline" title="Contact number for members">
+          <p>Member support helpline</p>
+          <a href="tel:08007074202" class="number">0800 707 42 02</a>
+        </aside>
+      </header>
+
+      <section>
+        <h1>Peterborough Tenants Union Ltd</h1>
+        <p>
+          Company limited by guarantee, registered in England & Wales, company
+          number: 13171833
+        </p>
+        <p>
+          Unit 82a James Carter Road, Mildenhall, Bury St. Edmunds, England,
+          IP28 7DE
+        </p>
+      </section>
+
+      <section>
+        <p>
+          The information on this website is provided for guidance only and is
+          not a substitute for qualified legal advice.
+        </p>
+        <p>
+          Peterborough Tenants Union Ltd does not accept any liability for any
+          loss or adverse outcome arising from your use of the information
+          provided here.
+        </p>
+      </section>
+
+      <section>
+        <ul role="nav">
+          <li>
+            <a href="/pages/privacy-policy">Privacy Policy</a>
+          </li>
+          <li>
+            <a href="/policies">Governing Documents</a>
+          </li>
+          <li>
+            <a href="https://account.peterboroughtenants.org">Member's Area</a>
+          </li>
+        </ul>
+      </section>
+    </footer>
+
+    <script>
+      // Prevent flash of large logo
+      const logo = document.getElementById("header-logo");
+      logo.removeAttribute("style");
+
+      // Show cookie notice
+      const cookieMessage = localStorage.getItem("hide_cookie_notice");
+      if (cookieMessage == null) {
+        const cookieBanner = document.getElementById("cookie-notice");
+        cookieBanner.removeAttribute("style");
+      }
+
+      function hideCookieNotice() {
+        localStorage.setItem("hide_cookie_notice", true);
+        const cookieBanner = document.getElementById("cookie-notice");
+        cookieBanner.remove();
+      }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/@tabler/icons@1.74.0/icons-react/dist/index.umd.min.js"></script>
+
+    {% block script %}{% endblock %}
+  </body>
+</html>
