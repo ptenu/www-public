@@ -1,9 +1,7 @@
 from genericpath import isdir
-from http.client import HTTPException
 import os
-from flask import abort, render_template, request, jsonify
+from flask import abort, render_template
 from main import app, CONTENT_DIR, get_page, get_page_list
-from payment import createCustomer, createPayment
 
 
 @app.route("/")
@@ -17,8 +15,8 @@ def home():
 
 @app.route("/<path:slug>")
 def page(slug: str):
-    file_path = os.path.join(CONTENT_DIR, f"{slug}.md")
-    dir_path = os.path.join(CONTENT_DIR, slug)
+    file_path = os.path.join(os.path.split(__file__)[0], CONTENT_DIR, f"{slug}.md")
+    dir_path = os.path.join(os.path.split(__file__)[0], CONTENT_DIR, slug)
 
     if os.path.isfile(file_path):
         return get_page(slug)

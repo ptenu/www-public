@@ -4,14 +4,14 @@ import os
 
 import frontmatter
 import markdown
-from flask import Flask, render_template, abort
+from flask import Flask, render_template, abort, Response
 
 app = Flask(__name__)
 
 
 @app.errorhandler(HTTPException)
 def handle_errors(e):
-    return render_template("http_error.html", error=e)
+    return Response(render_template("http_error.html", error=e), e.code)
 
 
 CONTENT_DIR = os.environ.get("WWW_CONTENT_DIR", os.path.join(os.getcwd(), "content"))
