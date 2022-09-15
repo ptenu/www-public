@@ -2,7 +2,7 @@ from genericpath import isdir
 from http.client import HTTPException
 import os
 from flask import abort, render_template, request, jsonify
-from app import app, CONTENT_DIR, get_page, get_page_list
+from main import app, CONTENT_DIR, get_page, get_page_list
 from payment import createCustomer, createPayment
 
 
