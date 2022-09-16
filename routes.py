@@ -1,7 +1,7 @@
-from genericpath import isdir
-import os
+import os, sys
 from flask import abort, render_template
-from main import app, CONTENT_DIR, get_page, get_page_list
+from app import app
+from app import CONTENT_DIR, get_page, get_page_list
 
 
 @app.route("/")

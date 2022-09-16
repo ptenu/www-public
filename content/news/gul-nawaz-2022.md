@@ -2,7 +2,7 @@
 title: Peterborough Councillor Gul Nawaz makes deal with tenant after "revenge evection"
 summary: Councillor Gul Nawaz makes a deal to write off costs after he evicted a tenant from his property following complaints to the council about the serious hazards there.
 date: 2022-05-18
-image_url: https://www.peterboroughtoday.co.uk/webimg/T0FLMTIzNTc5MDQw.jpg
+image_url: https://static.peterboroughtenants.app/gn.png
 template: news
 category: Eviction
 ---

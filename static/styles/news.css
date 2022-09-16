@@ -1,23 +1,24 @@
 @media screen {
   .big-header h1 {
     position: relative;
-    display: inline;
-    background-color: var(--accent-800);
-    margin: 0;
-    color: var(--colour-light);
+    display: block;
+    margin: 0 -0.22ex;
+    color: var(--colour-dark);
     text-transform: uppercase;
-    font-weight: 600;
+    text-shadow: -1px -1px #fff, 1px 1px #fff, -1px 1px #fff, 1px -1px #fff,
+      2px 2px var(--brand-500);
+    font-weight: 800;
     line-height: 1.12;
-    filter: drop-shadow(0.77ex 0 0 var(--accent-800))
-      drop-shadow(-0.77ex 0 0 var(--accent-800));
     z-index: 10;
     font-size: 3em;
+    background-color: #fff;
+    padding: 0 0.22ex;
   }
 }
 
 @media screen and (max-width: 545px) {
   .big-header h1 {
-    font-size: 2.33em;
+    font-size: 2.5em;
   }
 }
 
@@ -31,6 +32,7 @@
 p.summary {
   font-size: 1.33em;
   color: var(--accent-500);
+  font-family: "Noway";
 }
 
 h1,
@@ -78,32 +80,28 @@ p.date {
 
 p.author {
   background-color: #fff;
-  color: var(--brand-900);
+  color: var(--colour-blue-dark);
   margin-bottom: 0;
   font-size: 1em;
 }
 
-.image-wrapper {
-  display: grid;
-  grid-template-rows: 1fr;
-  grid-template-columns: 1fr;
-  height: 33vh;
-}
-
-.image-wrapper > header {
-  grid-column: 1 /-1;
-  grid-row: 1 /-1;
-  align-self: end;
-}
-
 .feature-image {
+  display: block;
   z-index: -1;
-  width: 80%;
-  height: 100%;
-  max-height: 33vh;
+  height: 400px;
   object-fit: cover;
   object-position: center;
-  grid-column: 1 / -1;
-  grid-row: 1 /-1;
-  justify-self: end;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.big-header {
+  margin: 0;
+  position: relative;
+}
+
+.feature-image ~ .page.article {
+  margin-top: 200px;
 }

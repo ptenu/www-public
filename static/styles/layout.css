@@ -5,15 +5,19 @@ body {
 }
 
 body > header {
+  --shadow-colour: #fff;
+
   display: flex;
   flex: 0 0 auto;
   justify-content: space-between;
   align-items: center;
   padding: 1rem 0;
-  border-bottom: 2px solid var(--accent-600);
   width: 890px;
   max-width: 100%;
   margin: 0 auto;
+  background-color: var(--shadow-colour);
+  box-shadow: -1rem 0 0 0 var(--shadow-colour), 1rem 0 0 0 var(--shadow-colour),
+    1rem 2px 0 0 var(--accent-600), -1rem 2px 0 0 var(--accent-600);
 }
 
 body > header > nav {
